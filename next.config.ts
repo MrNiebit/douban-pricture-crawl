@@ -16,6 +16,36 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: 'https',
+        hostname: 'img3.doubanio.com',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'img4.doubanio.com',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'img5.doubanio.com',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'img6.doubanio.com',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'img7.doubanio.com',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'img8.doubanio.com',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
         hostname: 'img9.doubanio.com',
         pathname: '/**',
       },

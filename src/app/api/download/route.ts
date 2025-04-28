@@ -13,8 +13,10 @@ export async function GET(request: NextRequest) {
       );
     }
 
+    const largeImageUrl = imageUrl.replace('subject/s/public','subject/l/public');
+    console.log(`下载图片: ${largeImageUrl}`);
     // 获取图片
-    const response = await fetch(imageUrl);
+    const response = await fetch(largeImageUrl);
     
     if (!response.ok) {
       return NextResponse.json(
