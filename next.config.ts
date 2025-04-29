@@ -49,6 +49,11 @@ const nextConfig: NextConfig = {
         hostname: 'img9.doubanio.com',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'pic.arkread.com',
+        pathname: '/**',
+      }
     ],
   }
 };
