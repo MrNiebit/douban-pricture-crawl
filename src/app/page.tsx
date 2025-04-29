@@ -101,6 +101,17 @@ export default function Home() {
   
   const copyToClipboard = () => {
     navigator.clipboard.writeText(llmResponse);
+    
+    // 显示临时消息框
+    const messageBox = document.createElement('div');
+    messageBox.className = 'fixed top-4 right-4 px-4 py-2 bg-green-500 text-white rounded-lg shadow-lg z-50';
+    messageBox.textContent = '已复制到剪贴板';
+    document.body.appendChild(messageBox);
+    
+    // 2秒后自动移除
+    setTimeout(() => {
+      messageBox.remove();
+    }, 2000);
   };
 
   return (
@@ -122,17 +133,12 @@ export default function Home() {
           <>
             {llmResponse && (
               <div className="w-full mb-8">
-                <div className="flex justify-between items-center mb-2">
+                <div className="mb-2">
                   <h2 className="text-xl font-semibold">文案生成</h2>
-                  <button 
-                    onClick={copyToClipboard}
-                    className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300 text-sm"
-                  >
-                    复制
-                  </button>
+
                 </div>
                 <div 
-                  className="p-4 bg-gray-50 rounded-lg whitespace-pre-wrap"
+                  className="p-4 bg-gray-50 rounded-lg whitespace-pre-wrap cursor-pointer hover:bg-gray-100 transition-colors"
                   onClick={copyToClipboard}
                 >
                   {llmResponse}
