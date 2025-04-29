@@ -99,19 +99,28 @@ export default function Home() {
     setSystemPrompt(prompt);
   };
   
-  const copyToClipboard = () => {
-    navigator.clipboard.writeText(llmResponse);
-    
-    // 显示临时消息框
-    const messageBox = document.createElement('div');
-    messageBox.className = 'fixed top-4 right-4 px-4 py-2 bg-green-500 text-white rounded-lg shadow-lg z-50';
-    messageBox.textContent = '已复制到剪贴板';
-    document.body.appendChild(messageBox);
-    
-    // 2秒后自动移除
-    setTimeout(() => {
-      messageBox.remove();
-    }, 2000);
+  const copyToClipboard = async () => {
+    try {
+      if (!navigator.clipboard) {
+        throw new Error('Clipboard API not supported');
+      }
+      
+      await navigator.clipboard.writeText(llmResponse);
+      
+      // 显示临时消息框
+      const messageBox = document.createElement('div');
+      messageBox.className = 'fixed top-4 right-4 px-4 py-2 bg-green-500 text-white rounded-lg shadow-lg z-50';
+      messageBox.textContent = '已复制到剪贴板';
+      document.body.appendChild(messageBox);
+      
+      // 2秒后自动移除
+      setTimeout(() => {
+        messageBox.remove();
+      }, 2000);
+    } catch (err) {
+      console.error('Failed to copy:', err);
+      alert('复制失败，请手动复制内容');
+    }
   };
 
   return (
